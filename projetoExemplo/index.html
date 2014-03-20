@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<meta charset="utf-8">
+    <head> <script type="text/java" src="http://code.jquery.com/jquery-2.1.0.js"></script>
+        <script type="text/javascript" src="js/angular1.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <script type="text/java" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="angular.js" type="text/javascript"></script>
+    <script src="js/underscore.js" type="text/javascript"></script>
+    <title>Desafio</title>
+</head>
+<body ng-controller="Ctrl1">
+<div class="container"> 
+
+	<div class="row">
+		<form class="navbar-form navbar-left" role="search">
+		  <div class="form-group">
+		    <input type="text" class="form-control" placeholder="Search">
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form><br />
+	<div>
+	
+	<h3 class="heading">Favoritos<h3>
+	<div class="form-group col-lg-4" ng-repeat="post in favoritos">
+        <img src="{{post.data.thumbnail}}"></img>
+        <span>{{post.data.title}}</span>
+        <small>{{post.data.author}}</small>
+        <small>{{post.data.created | date : 'dd/MM/yyyy HH:mm' }}</small>
+        <button type="button" class="btn btn-danger" ng-click="removeFavoritos(post)">- Favoritos</button>
+    </div>
+	
+	<br />
+	<h3>Posts<h3>
+	<div class="form-group col-lg-4" ng-repeat="post in posts">
+        <img src="{{post.data.thumbnail}}"></img>
+        <span>{{post.data.title}}</span>
+        <small>{{post.data.author}}</small>
+        <small>{{post.data.created | date : 'dd/MM/yyyy HH:mm' }}</small>
+        <button type="button" class="btn btn-primary" ng-click="addFavoritos(post)">+ Favoritos</button>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+<script type="text/ng-template" id="template.html">
+
+</script>
+
+

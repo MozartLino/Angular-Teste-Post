@@ -1,0 +1,5 @@
+<img src="{{post.data.thumbnail}}"></img>
+<span>{{post.data.title}}</span>
+<small>{{post.data.author}}</small>
+<small>{{post.data.created | date : 'dd/MM/yyyy HH:mm' }}</small>
+<button type="button" class="btn btn-primary" ng-click="addFavoritos(post)">+ Favoritos</button>
