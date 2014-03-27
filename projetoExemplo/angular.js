@@ -2,29 +2,23 @@ var app = angular.module("app", []);
 
 app.controller("Ctrl1", function($scope, Posts){
 
-	init = function () {
-		$scope.posts = [];
-		$scope.favoritos = [];
-
+	init = function () {	
 		Posts.get(function (posts) {
 	        $scope.posts = posts.data.children;
 	    });
     }();
 
-	$scope.addFavoritos = function (post) {
-		$scope.favoritos.unshift(post);
-		
-		var index = $scope.posts.indexOf(post);
-		$scope.posts.splice(index, 1);
+    $scope.filterSearch = function(title){
+    	post.data.title.indexof("")
+    }
 
-	};
+    $scope.favoritos = function(post){
+    	return post.favorito == true
+    }
 
-	$scope.removeFavoritos = function (post) {
-		$scope.posts.unshift(post);
-		
-		var index = $scope.favoritos.indexOf(post);
-		$scope.favoritos.splice(index, 1);
-	};
+    $scope.normais = function(post){
+    	return post.favorito != true
+    }
 });
 
 app.factory("Posts", function ($http) {
@@ -35,12 +29,18 @@ app.factory("Posts", function ($http) {
     }
 });
 
-// posts.directive("postTemplate", function () {
-//     return {
-//         restrict: "E",
-//         scope: {
-//             post: "="
-//         },
-//         templateUrl: '/post.html'
-//     }
-// });
+app.directive("postTemplate", function () {
+    return {
+        restrict: "E",
+        scope: {
+            post: "=",
+            tipo: "@"
+        },
+        templateUrl: 'post.html',
+        controller : function($scope){
+    		$scope.favoritar = function(post){
+				post.favorito = true;
+		    }
+        }
+    }
+});

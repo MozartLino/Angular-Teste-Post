@@ -22,33 +22,16 @@
 	<div>
 	
 	<h3 class="heading">Favoritos<h3>
-	<div class="form-group col-lg-4" ng-repeat="post in favoritos">
-        <img src="{{post.data.thumbnail}}"></img>
-        <span>{{post.data.title}}</span>
-        <small>{{post.data.author}}</small>
-        <small>{{post.data.created | date : 'dd/MM/yyyy HH:mm' }}</small>
-        <button type="button" class="btn btn-danger" ng-click="removeFavoritos(post)">- Favoritos</button>
+	<div class="form-group col-lg-4" ng-repeat="post in posts | filter:favoritos">
+       <post-template post="post" tipo="danger"></post-template>
     </div>
 	
 	<br />
 	<h3>Posts<h3>
-	<div class="form-group col-lg-4" ng-repeat="post in posts">
-        <img src="{{post.data.thumbnail}}"></img>
-        <span>{{post.data.title}}</span>
-        <small>{{post.data.author}}</small>
-        <small>{{post.data.created | date : 'dd/MM/yyyy HH:mm' }}</small>
-        <button type="button" class="btn btn-primary" ng-click="addFavoritos(post)">+ Favoritos</button>
+	<div class="form-group col-lg-4" ng-repeat="post in posts | filter:normais">
+        <post-template post="post" tipo="primary"></post-template>
     </div>
-
 </div>
 
 </body>
 </html>
-
-
-
-<script type="text/ng-template" id="template.html">
-
-</script>
-
-
